@@ -46,6 +46,9 @@ const { t } = useI18n()
 const handleSQLBotClick = () => {
   push('/sqlbot/index')
 }
+const handleAiChatClick = () => {
+  push('/ai-chat/index')
+}
 const sqlbotEnabled = ref(false)
 const desktop = isDesktop()
 const activeIndex = computed(() => {
@@ -151,6 +154,19 @@ onMounted(() => {
     </el-menu>
     <div class="operate-setting" v-if="!desktop">
       <XpackComponent jsname="c3dpdGNoZXI=" />
+      <el-tooltip effect="dark" content="AI 智能问答" placement="bottom">
+        <el-icon style="margin: 0 10px" class="ai-icon ai-chat-nav-icon" @click="handleAiChatClick">
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            style="display: block; width: 22px; height: 22px"
+          >
+            <path
+              d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+            />
+          </svg>
+        </el-icon>
+      </el-tooltip>
       <el-tooltip effect="dark" content="SQLBot" placement="bottom">
         <el-icon style="margin: 0 10px" class="ai-icon copilot-icon" v-if="sqlbotEnabled">
           <Icon name="copilot"><logo_sqlbot @click="handleSQLBotClick" class="svg-icon" /></Icon>
@@ -314,6 +330,15 @@ onMounted(() => {
 
 .ai-icon {
   font-size: 24px !important;
+}
+
+.ai-chat-nav-icon {
+  font-size: 22px !important;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  &:hover {
+    color: #3371ff !important;
+  }
 }
 
 .ai-icon-tips,
