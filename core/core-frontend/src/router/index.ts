@@ -37,6 +37,22 @@ export const routes: AppRouteRecordRaw[] = [
     ]
   },
   {
+    path: '/ai-chat',
+    name: 'ai-chat',
+    component: () => import('@/layout/index.vue'),
+    hidden: true,
+    meta: {},
+    children: [
+      {
+        path: 'index',
+        name: 'ai-chat-index',
+        hidden: true,
+        component: () => import('@/views/ai-chat/index.vue'),
+        meta: { hidden: true }
+      }
+    ]
+  },
+  {
     path: '/login',
     name: 'login',
     hidden: true,
